@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthPage } from './pages/Auth';
+import { NotFoundPage } from './pages/NotFound';
+import { DashboardPage } from './pages/Dashboard';
+import { Container } from '@chakra-ui/react';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Container maxW={'container.lg'} mt={'2rem'}>
+        <Routes>
+          {/* Auth - User login and registration */}
+          <Route path='/' element={<DashboardPage />} />
+          
+          <Route path='/' element={<DashboardPage />} />
+
+          {/* Auth - User login and registration */}
+          <Route path='/auth' element={<AuthPage />} />
+
+          {/* NotFound - Fallback page */}
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
 }
 

@@ -9,9 +9,7 @@ function App() {
     <BrowserRouter>
       <Container maxW={'container.lg'} mt={'2rem'}>
         <Routes>
-          {/* Auth - User login and registration */}
-          <Route path='/' element={<DashboardPage />} />
-          
+          {/* User dashboard */}
           <Route path='/' element={<DashboardPage />} />
 
           {/* Auth - User login and registration */}

@@ -16,6 +16,7 @@ import '@fontsource/inter/700.css'
 import '@fontsource/inter/800.css'
 import '@fontsource/inter/900.css'
 import { ToastContextProvider } from './contexts/toastContext';
+import { AppSettingsContextProvider } from './contexts/appSettingsContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -34,7 +35,9 @@ root.render(
     <FetchContextProvider>
       <AuthContextProvider>
         <ToastContextProvider>
-          <App />
+          <AppSettingsContextProvider>
+            <App />
+          </AppSettingsContextProvider>
         </ToastContextProvider>
       </AuthContextProvider>
     </FetchContextProvider>

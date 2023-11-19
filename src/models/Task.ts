@@ -1,9 +1,9 @@
 export interface Task {
-    id: number,
+    id?: number,
     userId: number,
     title: string,
     description: string,
     statusCode: string, 
-    createdTime: Date,
-    updatedTime: Date
+    createdTime?: Date,
+    updatedTime?: Date
 }

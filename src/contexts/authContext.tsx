@@ -21,7 +21,6 @@ export const AuthContextProvider = (props: PropsWithChildren) => {
     const isAuthenticated = () => {
         const lyraUserCookie = getCookie('lyra_user');
         if (lyraUserCookie) {
-            // setCookie(lyraUserCookie)
             return true
         } else {
             return false

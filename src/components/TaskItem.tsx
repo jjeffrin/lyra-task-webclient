@@ -16,7 +16,7 @@ export const TaskItem = (props: ITaskItem) => {
             <Flex flexDir={'row'} justifyContent={'space-between'} alignItems={'center'} mb={'1rem'}>
                 <Heading fontSize={'1rem'}>{props.task.title}</Heading>
                 <Tooltip label={new Date(props.task.createdTime!).toLocaleString()}>
-                    <Text>{moment(new Date(props.task.createdTime!)).fromNow()}</Text>
+                    <Text fontSize={'0.9rem'}>{moment(new Date(props.task.createdTime!)).fromNow()}</Text>
                 </Tooltip>
             </Flex>
             <Text textAlign={'justify'} mb={'1rem'} fontWeight={'medium'}>

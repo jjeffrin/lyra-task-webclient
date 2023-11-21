@@ -1,9 +1,12 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { FetchContextProvider } from './contexts/fetchContext';
 import { AuthContextProvider } from './contexts/authContext';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ToastContextProvider } from './contexts/toastContext';
+import { AppSettingsContextProvider } from './contexts/appSettingsContext';
 
 // fonts import
 import '@fontsource/inter/100.css'
@@ -15,8 +18,6 @@ import '@fontsource/inter/600.css'
 import '@fontsource/inter/700.css'
 import '@fontsource/inter/800.css'
 import '@fontsource/inter/900.css'
-import { ToastContextProvider } from './contexts/toastContext';
-import { AppSettingsContextProvider } from './contexts/appSettingsContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -30,19 +31,19 @@ const appTheme = extendTheme({
 })
 
 root.render(
-  // <React.StrictMode>
-  <ChakraProvider theme={appTheme}>
-    <FetchContextProvider>
-      <AuthContextProvider>
-        <ToastContextProvider>
-          <AppSettingsContextProvider>
-            <App />
-          </AppSettingsContextProvider>
-        </ToastContextProvider>
-      </AuthContextProvider>
-    </FetchContextProvider>
-  </ChakraProvider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <ChakraProvider theme={appTheme}>
+      <FetchContextProvider>
+        <AuthContextProvider>
+          <ToastContextProvider>
+            <AppSettingsContextProvider>
+              <App />
+            </AppSettingsContextProvider>
+          </ToastContextProvider>
+        </AuthContextProvider>
+      </FetchContextProvider>
+    </ChakraProvider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

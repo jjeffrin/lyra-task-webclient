@@ -10,7 +10,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-To run the application in HTTPS, the following change can be done to the `npm start` script in `package.json` file:
+To run the application in HTTPS, the following change can be made to the `npm start` script in `package.json` file:
 
 `cross-env HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem react-scripts start`
 

@@ -97,7 +97,7 @@ export const AuthPage = () => {
         setBtnLoading(true)
         if (registerForm) {
             // perform registration
-            getFetch("https://lyrausersvc.jjeffr.in/api/Auth/Register", "POST", JSON.stringify({ Name: name, Email: email, Password: password }))
+            getFetch("https://auth.lyra.jjeffr.in/api/Auth/Register", "POST", JSON.stringify({ Name: name, Email: email, Password: password }))
                 .then((response) => {
                     if (response.ok) {
                         // SHOW TOAST TO ASK USER TO LOGIN
@@ -117,7 +117,7 @@ export const AuthPage = () => {
                 })
         }
         else {
-            getFetch("https://lyrausersvc.jjeffr.in/api/Auth/AccessToken", "POST", JSON.stringify({ Email: email, Password: password }))
+            getFetch("https://auth.lyra.jjeffr.in/api/Auth/AccessToken", "POST", JSON.stringify({ Email: email, Password: password }))
                 .then((response) => {
                     if (response.ok) {
                         showToast('Welcome :)', 'Authentication successful.', 'success')

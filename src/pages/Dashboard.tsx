@@ -31,7 +31,7 @@ export const DashboardPage = () => {
         const currUser = getUser()
         console.log(currUser)
         if (currUser) {
-            getFetch(`https://lyratasksvc.jjeffr.in/api/WorkItems/GetByUserId?id=${currUser.userId}`, "GET")
+            getFetch(`https://task.lyra.jjeffr.in/api/WorkItems/GetByUserId?id=${currUser.userId}`, "GET")
                 .then(async (response) => {
                     const data = await response.json() as Task[]
                     setTasks(data)
@@ -45,7 +45,7 @@ export const DashboardPage = () => {
     const createNewTask = (title: string, descr: string, statusCd: string) => {
         const currUser = getUser()
         if (currUser) {
-            getFetch(`https://lyratasksvc.jjeffr.in/api/WorkItems`, "POST", JSON.stringify({ title: title, description: descr, statusCode: statusCd, userId: +currUser.userId } as Task))
+            getFetch(`https://task.lyra.jjeffr.in/api/WorkItems`, "POST", JSON.stringify({ title: title, description: descr, statusCode: statusCd, userId: +currUser.userId } as Task))
                 .then(async (response) => {
                     if (response.ok) {
                         getTasks()

@@ -16,7 +16,7 @@ export const DashboardPage = () => {
     const { getFetch } = useFetch()
 
     const logout = () => {
-        document.cookie = `${'lyra_user'}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        document.cookie = `lyra_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.jjeffr.in`;
         navigate('/auth')
     }
 

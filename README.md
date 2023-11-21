@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+This React application can be accessed [here](https://lyra.jjeffr.in/).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -7,6 +9,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `npm start`
+
+To run the application in HTTPS, the following change can be made to the `npm start` script in `package.json` file:
+
+`cross-env HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem react-scripts start`
+
+Note: For the above line to work, SSL certificate should be created in the React application's root directory, which can be created using [mkcert](https://www.freecodecamp.org/news/how-to-set-up-https-locally-with-create-react-app/).
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

@@ -14,7 +14,7 @@ To run the application in HTTPS, the following change can be made to the `npm st
 
 `cross-env HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem react-scripts start`
 
-**Note: For the above line to work, SSL certificate should be created in the applications directory, which can be created using [mkcert](https://www.freecodecamp.org/news/how-to-set-up-https-locally-with-create-react-app/).
+Note: For the above line to work, SSL certificate should be created in the applications directory, which can be created using [mkcert](https://www.freecodecamp.org/news/how-to-set-up-https-locally-with-create-react-app/).
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

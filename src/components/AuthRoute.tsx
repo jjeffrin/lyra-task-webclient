@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import { useAuthState } from "../hooks/useAuthState"
-import { AuthPage } from "../pages/Auth"
+import { AuthPage } from "../pages/auth"
 
 export const AuthRoute = () => {
 

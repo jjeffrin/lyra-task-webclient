@@ -3,9 +3,10 @@ import { useAuthState } from "../hooks/useAuthState"
 import { useNavigate } from "react-router-dom"
 import { Button, ButtonGroup, Flex, Heading, SlideFade } from "@chakra-ui/react"
 import { useFetch } from "../hooks/useFetch"
-import { Task } from "../models/Task"
-import { TaskItem } from "../components/TaskItem"
-import { CreateNewTask } from "../components/CreateNewTask"
+import { Task } from "../models/task"
+import { TaskItem } from "../components/taskItem"
+import { CreateNewTask } from "../components/createNewTask"
+import { AUTH_BASE_URL, HTTP_GET, HTTP_POST, TASK_BASE_URL } from "../constants"
 
 export const DashboardPage = () => {
 
@@ -31,7 +32,7 @@ export const DashboardPage = () => {
         const currUser = getUser()
         console.log(currUser)
         if (currUser) {
-            getFetch(`https://task.lyra.jjeffr.in/api/WorkItems/GetByUserId?id=${currUser.userId}`, "GET")
+            getFetch(`${TASK_BASE_URL}WorkItems/GetByUserId?id=${currUser.userId}`, HTTP_GET)
                 .then(async (response) => {
                     const data = await response.json() as Task[]
                     setTasks(data)
@@ -45,7 +46,7 @@ export const DashboardPage = () => {
     const createNewTask = (title: string, descr: string, statusCd: string) => {
         const currUser = getUser()
         if (currUser) {
-            getFetch(`https://task.lyra.jjeffr.in/api/WorkItems`, "POST", JSON.stringify({ title: title, description: descr, statusCode: statusCd, userId: +currUser.userId } as Task))
+            getFetch(`${AUTH_BASE_URL}/WorkItems`, HTTP_POST, JSON.stringify({ title: title, description: descr, statusCode: statusCd, userId: +currUser.userId } as Task))
                 .then(async (response) => {
                     if (response.ok) {
                         getTasks()

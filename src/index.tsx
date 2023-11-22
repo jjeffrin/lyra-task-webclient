@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { FetchContextProvider } from './contexts/fetchContext';
-import { AuthContextProvider } from './contexts/authContext';
+import { FetchContextProvider } from './contexts/FetchContext';
+import { AuthContextProvider } from './contexts/AuthContext';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import { ToastContextProvider } from './contexts/toastContext';
-import { AppSettingsContextProvider } from './contexts/appSettingsContext';
+import { ToastContextProvider } from './contexts/ToastContext';
+import { AppSettingsContextProvider } from './contexts/AppSettingsContext';
 
 // fonts import
 import '@fontsource/inter/100.css'

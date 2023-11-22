@@ -6,7 +6,7 @@ import { useFetch } from "../hooks/useFetch"
 import { Task } from "../models/Task"
 import { TaskItem } from "../components/TaskItem"
 import { CreateNewTask } from "../components/CreateNewTask"
-import { AUTH_BASE_URL, HTTP_GET, HTTP_POST, TASK_BASE_URL } from "../constants"
+import { AUTH_BASE_URL, HTTP_GET, HTTP_POST, TASK_BASE_URL } from "../Constants"
 
 export const DashboardPage = () => {
 

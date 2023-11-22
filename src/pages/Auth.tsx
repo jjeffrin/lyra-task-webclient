@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Text, Flex, Heading, Input, Button, InputGroup, InputRightElement, IconButton, FormControl, FormErrorMessage } from "@chakra-ui/react"
 import { useToast } from "../hooks/useToast";
-import { AUTH_BASE_URL, HTTP_POST } from "../constants";
+import { AUTH_BASE_URL, HTTP_POST } from "../Constants";
 
 export const AuthPage = () => {
 

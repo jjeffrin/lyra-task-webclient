@@ -1,5 +1,5 @@
 import { Flex, Heading, Badge, Box, Text, Tooltip } from "@chakra-ui/react"
-import { Task } from "../models/task"
+import { Task } from "../models/Task"
 import moment from 'moment'
 import { useAppSettings } from "../hooks/useAppSettings"
 

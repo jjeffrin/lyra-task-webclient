@@ -3,9 +3,9 @@ import { useAuthState } from "../hooks/useAuthState"
 import { useNavigate } from "react-router-dom"
 import { Button, ButtonGroup, Flex, Heading, SlideFade } from "@chakra-ui/react"
 import { useFetch } from "../hooks/useFetch"
-import { Task } from "../models/task"
-import { TaskItem } from "../components/taskItem"
-import { CreateNewTask } from "../components/createNewTask"
+import { Task } from "../models/Task"
+import { TaskItem } from "../components/TaskItem"
+import { CreateNewTask } from "../components/CreateNewTask"
 import { AUTH_BASE_URL, HTTP_GET, HTTP_POST, TASK_BASE_URL } from "../constants"
 
 export const DashboardPage = () => {

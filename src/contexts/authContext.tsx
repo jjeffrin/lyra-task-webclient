@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext } from "react";
-import { User } from "../models/user";
+import { User } from "../models/User";
 
 interface IAuthContext {
     isAuthenticated: () => boolean,

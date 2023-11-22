@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AuthPage } from './pages/auth';
-import { NotFoundPage } from './pages/notFound';
-import { DashboardPage } from './pages/dashboard';
+import { AuthPage } from './pages/Auth';
+import { NotFoundPage } from './pages/NotFound';
+import { DashboardPage } from './pages/Dashboard';
 import { Container } from '@chakra-ui/react';
 
 function App() {

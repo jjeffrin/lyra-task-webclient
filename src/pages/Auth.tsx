@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Text, Flex, Heading, Input, Button, InputGroup, InputRightElement, IconButton, FormControl, FormErrorMessage } from "@chakra-ui/react"
 import { useToast } from "../hooks/useToast";
+import { AUTH_BASE_URL, HTTP_POST } from "../constants";
 
 export const AuthPage = () => {
 
@@ -97,7 +98,7 @@ export const AuthPage = () => {
         setBtnLoading(true)
         if (registerForm) {
             // perform registration
-            getFetch("https://auth.lyra.jjeffr.in/api/Auth/Register", "POST", JSON.stringify({ Name: name, Email: email, Password: password }))
+            getFetch(`${AUTH_BASE_URL}Auth/Register`, HTTP_POST, JSON.stringify({ Name: name, Email: email, Password: password }))
                 .then((response) => {
                     if (response.ok) {
                         // SHOW TOAST TO ASK USER TO LOGIN
@@ -117,7 +118,7 @@ export const AuthPage = () => {
                 })
         }
         else {
-            getFetch("https://auth.lyra.jjeffr.in/api/Auth/AccessToken", "POST", JSON.stringify({ Email: email, Password: password }))
+            getFetch(`${AUTH_BASE_URL}Auth/AccessToken`, HTTP_POST, JSON.stringify({ Email: email, Password: password }))
                 .then((response) => {
                     if (response.ok) {
                         showToast('Welcome :)', 'Authentication successful.', 'success')

@@ -26,7 +26,7 @@ export const DashboardPage = () => {
             navigate('/auth')
         }
         getTasks()
-    }, [])
+    })
 
     const getTasks = () => {
         const currUser = getUser()

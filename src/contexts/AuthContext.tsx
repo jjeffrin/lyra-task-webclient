@@ -1,6 +1,5 @@
 import { PropsWithChildren, createContext } from "react";
 import { User } from "../models/User";
-import { useNavigate } from "react-router-dom";
 
 interface IAuthContext {
     isAuthenticated: () => boolean,

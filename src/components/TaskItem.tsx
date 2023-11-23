@@ -1,10 +1,12 @@
-import { Flex, Heading, Badge, Box, Text, Tooltip } from "@chakra-ui/react"
+import { Flex, Heading, Badge, Box, Text, Tooltip, IconButton } from "@chakra-ui/react"
 import { Task } from "../models/Task"
 import moment from 'moment'
 import { useAppSettings } from "../hooks/useAppSettings"
+import { FaTrash } from "react-icons/fa";
 
 interface ITaskItem {
-    task: Task
+    task: Task,
+    onDelClick: (id: number) => void
 }
 
 export const TaskItem = (props: ITaskItem) => {
@@ -22,7 +24,10 @@ export const TaskItem = (props: ITaskItem) => {
             <Text textAlign={'justify'} mb={'1rem'} fontWeight={'medium'}>
                 {props.task.description}
             </Text>
-            <Badge colorScheme={getStatusColorScheme(props.task.statusCode)}>{getStatusDescription(props.task.statusCode)}</Badge>
+            <Flex flexDir={'row'} alignItems={'center'} justifyContent={'space-between'}>
+                <Badge colorScheme={getStatusColorScheme(props.task.statusCode)}>{getStatusDescription(props.task.statusCode)}</Badge>
+                <IconButton color="red.400" size={'sm'} icon={<FaTrash />} onClick={() => props.onDelClick(props.task.id ?? 0)} aria-label="Delete button" />
+            </Flex>
         </Box>
     )
 }

@@ -7,7 +7,7 @@ import { Task } from "../models/Task"
 import { TaskItem } from "../components/TaskItem"
 import { CreateNewTask } from "../components/CreateNewTask"
 import { MdAddTask, MdLogout } from "react-icons/md";
-import { HTTP_GET, HTTP_POST, TASK_BASE_URL } from "../Constants"
+import { HTTP_DELETE, HTTP_GET, HTTP_POST, TASK_BASE_URL } from "../Constants"
 import EmptyList from "../assets/empty-list.svg"
 
 export const DashboardPage = () => {
@@ -63,6 +63,24 @@ export const DashboardPage = () => {
         }
     }
 
+    const deleteTask = (id: number) => {
+        const currUser = getUser()
+        if (currUser) {
+            getFetch(`${TASK_BASE_URL}WorkItems`, HTTP_DELETE, JSON.stringify({ userId: currUser.userId, id: id }))
+                .then((response) => {
+                    if (response.ok) {
+                        getTasks()
+                    }
+                    else {
+                        // SHOW ERROR TOAST
+                    }
+                }).catch((error) => {
+                    // SHOW ERROR TOAST
+                    console.log(error)
+                })
+        }
+    }
+
     return (
         <SlideFade in={true}>
             <Flex flexDir={'row'} justifyContent={'space-between'} alignItems={'center'} mt={'2rem'} mb={'2rem'} bgColor={'gray.50'} p={'2rem'} borderRadius={'1rem'}>
@@ -83,7 +101,7 @@ export const DashboardPage = () => {
             }
 
             {tasks.map(task => {
-                return <TaskItem key={task.id} task={task} />
+                return <TaskItem key={task.id} task={task} onDelClick={deleteTask} />
             })}
 
             <CreateNewTask showModal={showModal} setShowModal={setShowModal} createNewTask={createNewTask} />

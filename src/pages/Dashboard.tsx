@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import { useAuthState } from "../hooks/useAuthState"
 import { useNavigate } from "react-router-dom"
-import { Button, ButtonGroup, Flex, Heading, IconButton, SlideFade } from "@chakra-ui/react"
+import { Box, Button, ButtonGroup, Flex, Heading, IconButton, Image, SlideFade, Text } from "@chakra-ui/react"
 import { useFetch } from "../hooks/useFetch"
 import { Task } from "../models/Task"
 import { TaskItem } from "../components/TaskItem"
 import { CreateNewTask } from "../components/CreateNewTask"
 import { MdAddTask, MdLogout } from "react-icons/md";
 import { HTTP_GET, HTTP_POST, TASK_BASE_URL } from "../Constants"
+import EmptyList from "../assets/empty-list.svg"
 
 export const DashboardPage = () => {
 
@@ -65,13 +66,22 @@ export const DashboardPage = () => {
 
     return (
         <SlideFade in={true}>
-            <Flex flexDir={'row'} justifyContent={'space-between'} alignItems={'center'} mt={'2rem'} mb={'2rem'}>
+            <Flex flexDir={'row'} justifyContent={'space-between'} alignItems={'center'} mt={'2rem'} mb={'2rem'} bgColor={'gray.50'} p={'2rem'} borderRadius={'1rem'}>
                 <Heading fontSize={'1.5rem'} fontWeight={'black'}>welcome, Jeffrin{getUser()?.name}</Heading>
                 <ButtonGroup size={'sm'}>
                     <IconButton icon={<MdAddTask />} aria-label="create new task" onClick={() => setShowModal(true)} />
                     <IconButton icon={<MdLogout />} aria-label="logout" onClick={() => logoutCurrentUser()} />
                 </ButtonGroup>
             </Flex>
+
+            {
+                tasks.length === 0 ?
+                    <Box>
+                        <Image mx={'auto'} boxSize={'30rem'} src={EmptyList} aria-label="No tasks found." />
+                        <Text fontWeight={'bold'} textAlign={'center'}>No tasks found. Add a new task to view them here.</Text>
+                    </Box> :
+                    <></>
+            }
 
             {tasks.map(task => {
                 return <TaskItem key={task.id} task={task} />

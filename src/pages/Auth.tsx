@@ -142,7 +142,7 @@ export const AuthPage = () => {
         if (isAuthenticated()) {
             navigate('/')
         }
-    })
+    }, [])
 
     return (
         <SlideFade in={true}>

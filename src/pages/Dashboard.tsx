@@ -28,11 +28,10 @@ export const DashboardPage = () => {
             navigate('/auth')
         }
         getTasks()
-    })
+    }, [])
 
     const getTasks = () => {
         const currUser = getUser()
-        console.log(currUser)
         if (currUser) {
             getFetch(`${TASK_BASE_URL}WorkItems/GetByUserId?id=${currUser.userId}`, HTTP_GET)
                 .then(async (response) => {
@@ -67,7 +66,7 @@ export const DashboardPage = () => {
     return (
         <SlideFade in={true}>
             <Flex flexDir={'row'} justifyContent={'space-between'} alignItems={'center'} mt={'2rem'} mb={'2rem'} bgColor={'gray.50'} p={'2rem'} borderRadius={'1rem'}>
-                <Heading fontSize={'1.5rem'} fontWeight={'black'}>welcome, Jeffrin{getUser()?.name}</Heading>
+                <Heading fontSize={'1.5rem'} fontWeight={'black'}>welcome, {getUser()?.name}</Heading>
                 <ButtonGroup size={'sm'}>
                     <IconButton icon={<MdAddTask />} aria-label="create new task" onClick={() => setShowModal(true)} />
                     <IconButton icon={<MdLogout />} aria-label="logout" onClick={() => logoutCurrentUser()} />

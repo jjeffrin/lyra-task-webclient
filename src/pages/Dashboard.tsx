@@ -46,7 +46,7 @@ export const DashboardPage = () => {
     const createNewTask = (title: string, descr: string, statusCd: string) => {
         const currUser = getUser()
         if (currUser) {
-            getFetch(`${AUTH_BASE_URL}/WorkItems`, HTTP_POST, JSON.stringify({ title: title, description: descr, statusCode: statusCd, userId: +currUser.userId } as Task))
+            getFetch(`${TASK_BASE_URL}/WorkItems`, HTTP_POST, JSON.stringify({ title: title, description: descr, statusCode: statusCd, userId: +currUser.userId } as Task))
                 .then(async (response) => {
                     if (response.ok) {
                         getTasks()

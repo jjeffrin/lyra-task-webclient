@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import { useAuthState } from "../hooks/useAuthState"
 import { useNavigate } from "react-router-dom"
-import { Button, ButtonGroup, Flex, Heading, SlideFade } from "@chakra-ui/react"
+import { Button, ButtonGroup, Flex, Heading, IconButton, SlideFade } from "@chakra-ui/react"
 import { useFetch } from "../hooks/useFetch"
 import { Task } from "../models/Task"
 import { TaskItem } from "../components/TaskItem"
 import { CreateNewTask } from "../components/CreateNewTask"
+import { MdAddTask, MdLogout } from "react-icons/md";
 import { HTTP_GET, HTTP_POST, TASK_BASE_URL } from "../Constants"
 
 export const DashboardPage = () => {
@@ -36,7 +37,6 @@ export const DashboardPage = () => {
                 .then(async (response) => {
                     const data = await response.json() as Task[]
                     setTasks(data)
-                    console.log(data)
                 }).catch((error) => {
                     console.log(error)
                 })
@@ -66,10 +66,10 @@ export const DashboardPage = () => {
     return (
         <SlideFade in={true}>
             <Flex flexDir={'row'} justifyContent={'space-between'} alignItems={'center'} mt={'2rem'} mb={'2rem'}>
-                <Heading fontSize={'2rem'} fontWeight={'black'}>welcome, {getUser()?.name}</Heading>
-                <ButtonGroup>
-                    <Button onClick={() => setShowModal(true)}>create task</Button>
-                    <Button onClick={() => logoutCurrentUser()}>logout</Button>
+                <Heading fontSize={'1.5rem'} fontWeight={'black'}>welcome, Jeffrin{getUser()?.name}</Heading>
+                <ButtonGroup size={'sm'}>
+                    <IconButton icon={<MdAddTask />} aria-label="create new task" onClick={() => setShowModal(true)} />
+                    <IconButton icon={<MdLogout />} aria-label="logout" onClick={() => logoutCurrentUser()} />
                 </ButtonGroup>
             </Flex>
 

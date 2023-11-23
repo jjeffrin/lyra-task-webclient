@@ -6,18 +6,18 @@ import { useFetch } from "../hooks/useFetch"
 import { Task } from "../models/Task"
 import { TaskItem } from "../components/TaskItem"
 import { CreateNewTask } from "../components/CreateNewTask"
-import { AUTH_BASE_URL, HTTP_GET, HTTP_POST, TASK_BASE_URL } from "../Constants"
+import { HTTP_GET, HTTP_POST, TASK_BASE_URL } from "../Constants"
 
 export const DashboardPage = () => {
 
-    const { isAuthenticated, getUser } = useAuthState()
+    const { isAuthenticated, getUser, logout } = useAuthState()
     const [tasks, setTasks] = useState<Task[]>([])
     const [showModal, setShowModal] = useState<boolean>(false)
     const navigate = useNavigate()
     const { getFetch } = useFetch()
 
-    const logout = () => {
-        document.cookie = `lyra_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.jjeffr.in`;
+    const logoutCurrentUser = () => {
+        logout()
         navigate('/auth')
     }
 
@@ -69,7 +69,7 @@ export const DashboardPage = () => {
                 <Heading fontSize={'2rem'} fontWeight={'black'}>welcome, {getUser()?.name}</Heading>
                 <ButtonGroup>
                     <Button onClick={() => setShowModal(true)}>create task</Button>
-                    <Button onClick={() => logout()}>logout</Button>
+                    <Button onClick={() => logoutCurrentUser()}>logout</Button>
                 </ButtonGroup>
             </Flex>
 

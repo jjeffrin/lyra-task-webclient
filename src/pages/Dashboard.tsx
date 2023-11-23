@@ -65,7 +65,7 @@ export const DashboardPage = () => {
 
     return (
         <SlideFade in={true}>
-            <Flex flexDir={'row'} justifyContent={'space-between'} alignItems={'center'} mb={'2rem'}>
+            <Flex flexDir={'row'} justifyContent={'space-between'} alignItems={'center'} mt={'2rem'} mb={'2rem'}>
                 <Heading fontSize={'2rem'} fontWeight={'black'}>welcome, {getUser()?.name}</Heading>
                 <ButtonGroup>
                     <Button onClick={() => setShowModal(true)}>create task</Button>

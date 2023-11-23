@@ -7,7 +7,7 @@ import { Container } from '@chakra-ui/react';
 function App() {
   return (
     <BrowserRouter>
-      <Container maxW={'container.lg'} mt={'2rem'}>
+      <Container maxW={'container.lg'}>
         <Routes>
           {/* User dashboard */}
           <Route path='/' element={<DashboardPage />} />

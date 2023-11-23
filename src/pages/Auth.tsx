@@ -3,9 +3,10 @@ import { useFetch } from "../hooks/useFetch"
 import { useAuthState } from "../hooks/useAuthState"
 import { useNavigate } from "react-router-dom"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Text, Flex, Heading, Input, Button, InputGroup, InputRightElement, IconButton, FormControl, FormErrorMessage } from "@chakra-ui/react"
+import { Text, Flex, Heading, Input, Button, InputGroup, InputRightElement, IconButton, FormControl, FormErrorMessage, Image } from "@chakra-ui/react"
 import { useToast } from "../hooks/useToast";
 import { AUTH_BASE_URL, HTTP_POST } from "../Constants";
+import authImg from '../assets/sitting-reading.svg'
 
 export const AuthPage = () => {
 
@@ -125,7 +126,7 @@ export const AuthPage = () => {
                         setTimeout(() => navigate('/'), 1000)
                     }
                     else {
-                        showToast("Try again", "Something went wrong", 'error')
+                        showToast("Try again", "Invalid Email/Password.", 'error')
                     }
                 }).catch((error) => {
                     // SHOW ERROR TOAST
@@ -145,6 +146,7 @@ export const AuthPage = () => {
 
     return (
         <Flex flexDir={'column'} h={'calc(100vh - 2rem)'} alignItems={'center'} justifyContent={'Center'}>
+            <Image boxSize={'25rem'} aria-label="A guy is sitting on a chair with an open book while he is looking away. There are few books next to his chair." src={authImg}/>
             <Heading fontWeight={'black'}>Lyra.</Heading>
             <Text fontWeight={'bold'} mb={'2rem'}>task management, simplified.</Text>
             {showNameField()}

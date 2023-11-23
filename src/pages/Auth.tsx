@@ -3,7 +3,7 @@ import { useFetch } from "../hooks/useFetch"
 import { useAuthState } from "../hooks/useAuthState"
 import { useNavigate } from "react-router-dom"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Text, Flex, Heading, Input, Button, InputGroup, InputRightElement, IconButton, FormControl, FormErrorMessage, Image } from "@chakra-ui/react"
+import { Text, Flex, Heading, Input, Button, InputGroup, InputRightElement, IconButton, FormControl, FormErrorMessage, Image, Box, SlideFade } from "@chakra-ui/react"
 import { useToast } from "../hooks/useToast";
 import { AUTH_BASE_URL, HTTP_POST } from "../Constants";
 import authImg from '../assets/sitting-reading.svg'
@@ -145,33 +145,35 @@ export const AuthPage = () => {
     })
 
     return (
-        <Flex flexDir={'column'} h={'100vh'} alignItems={'center'} justifyContent={'Center'}>
-            <Image boxSize={'25rem'} aria-label="A guy is sitting on a chair with an open book while he is looking away. There are few books next to his chair." src={authImg}/>
-            <Heading fontWeight={'black'}>Lyra.</Heading>
-            <Text fontWeight={'bold'} mb={'2rem'}>task management, simplified.</Text>
-            {showNameField()}
-            <FormControl maxW={'22rem'} mb={'1rem'} isInvalid={!validEmail}>
-                <Input type="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
-                <FormErrorMessage>Email is required.</FormErrorMessage>
-            </FormControl>
-            <FormControl maxW={'22rem'} mb={'1rem'} isInvalid={!validPassword}>
-                <InputGroup>
-                    <Input
-                        type={showPassword ? 'text' : 'password'}
-                        placeholder='password'
-                        onChange={e => setPassword(e.target.value)}
-                    />
-                    <InputRightElement>
-                        {showPassword ?
-                            <IconButton icon={<FaEyeSlash />} aria-label={""} onClick={() => setShowPassword(!showPassword)} /> :
-                            <IconButton icon={<FaEye />} aria-label={""} onClick={() => setShowPassword(!showPassword)} />}
-                    </InputRightElement>
-                </InputGroup>
-                <FormErrorMessage>Password is required.</FormErrorMessage>
-            </FormControl>
-            {showRePasswordField()}
-            <Button isLoading={btnLoading} onClick={() => onAuthSubmit()} mb={'1rem'}>{getAuthFormBtnText()}</Button>
-            <div>{getAuthFormHelperText()} <Button variant={'link'} onClick={(e) => toggleAuthForm(e)}>{getAuthFormHelperBtnText()}</Button></div>
-        </Flex>
+        <SlideFade in={true}>
+            <Flex flexDir={'column'} h={'100vh'} alignItems={'center'} justifyContent={'Center'}>
+                <Image boxSize={'25rem'} aria-label="A guy is sitting on a chair with an open book while he is looking away. There are few books next to his chair." src={authImg} />
+                <Heading fontWeight={'black'}>Lyra.</Heading>
+                <Text fontWeight={'bold'} mb={'2rem'}>task management, simplified.</Text>
+                {showNameField()}
+                <FormControl maxW={'22rem'} mb={'1rem'} isInvalid={!validEmail}>
+                    <Input type="email" placeholder="email" onChange={e => setEmail(e.target.value)} />
+                    <FormErrorMessage>Email is required.</FormErrorMessage>
+                </FormControl>
+                <FormControl maxW={'22rem'} mb={'1rem'} isInvalid={!validPassword}>
+                    <InputGroup>
+                        <Input
+                            type={showPassword ? 'text' : 'password'}
+                            placeholder='password'
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                        <InputRightElement>
+                            {showPassword ?
+                                <IconButton icon={<FaEyeSlash />} aria-label={""} onClick={() => setShowPassword(!showPassword)} /> :
+                                <IconButton icon={<FaEye />} aria-label={""} onClick={() => setShowPassword(!showPassword)} />}
+                        </InputRightElement>
+                    </InputGroup>
+                    <FormErrorMessage>Password is required.</FormErrorMessage>
+                </FormControl>
+                {showRePasswordField()}
+                <Button isLoading={btnLoading} onClick={() => onAuthSubmit()} mb={'1rem'}>{getAuthFormBtnText()}</Button>
+                <Box mb={'2rem'}>{getAuthFormHelperText()} <Button variant={'link'} onClick={(e) => toggleAuthForm(e)}>{getAuthFormHelperBtnText()}</Button></Box>
+            </Flex>
+        </SlideFade>
     )
 }

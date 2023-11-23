@@ -145,7 +145,7 @@ export const AuthPage = () => {
     })
 
     return (
-        <Flex flexDir={'column'} h={'calc(100vh - 2rem)'} alignItems={'center'} justifyContent={'Center'}>
+        <Flex flexDir={'column'} h={'100vh'} alignItems={'center'} justifyContent={'Center'}>
             <Image boxSize={'25rem'} aria-label="A guy is sitting on a chair with an open book while he is looking away. There are few books next to his chair." src={authImg}/>
             <Heading fontWeight={'black'}>Lyra.</Heading>
             <Text fontWeight={'bold'} mb={'2rem'}>task management, simplified.</Text>
